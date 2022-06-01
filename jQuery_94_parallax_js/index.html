@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='./node_modules/jquery/dist/jquery.min.js'></script>
+    <script src="./node_modules/jquery-parallax.js/parallax.min.js"></script>
+    <style>
+        .parallax-window{
+            min-height: 400px;
+            background:transparent;
+        }
+        .banner{
+            min-height: 400px;
+            background:transparent;
+        }
+        .blank{
+            height: 300px;
+        }
+        h2{
+            font-size: 3em;
+            background: #fff;
+            color: #000;
+            padding:10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="blank"></div>
+    <div class="blank"></div>
+    <div class="blank"></div>
+    <!-- <div class="parallax-window" data-parallax="scroll" data-image-src="./images/stellar-spire-eagle-nebula-1400x900.jpg">
+        <h2>Banner title</h2>
+    </div> -->
+    <div class="banner"> <!-- 스크립트 방식 -->
+        <h2>Banner title</h2>
+    </div>
+    <div class="blank"></div>
+    <div class="blank"></div>
+    <div class="blank"></div>
+    <div class="blank"></div>
+    <script>
+        $('.banner').parallax({
+            imageSrc: "./images/stellar-spire-eagle-nebula-1400x900.jpg",
+            speed :0.5 // div가 1 움직이면 이미지는 0.5만큼 움직인다
+        });
+    </script>
+</body>
+</html>

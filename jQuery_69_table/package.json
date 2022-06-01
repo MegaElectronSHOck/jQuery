@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "tablesort": "^5.3.0",
+    "tablesorter": "^2.31.3"
+  }
+}

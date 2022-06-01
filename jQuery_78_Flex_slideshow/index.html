@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; }
+
+.slider {
+  color: #fff;
+  text-shadow: 2px 2px 5px #000;
+  display:flex;
+}
+
+.slider .slides{
+    width: 1280px;
+    display: flex;
+    position :relative;
+}
+
+.slider .slides-container{
+    width: 320px;
+    overflow:hidden;
+}
+
+.slider .slide{
+    display: flex;
+    justify-content :center;
+    align-items : center;
+    width: 320px;
+    height: 240px;
+}
+
+.slider button {
+  background-color: #333;
+  color: #aaa;
+  font-size: 30px;
+  border: none;
+  transition: all .5s;
+}
+.slider button:hover {
+  background-color: #777;
+  color: #eee;
+  cursor: pointer;
+}
+
+.slide h2 { margin-bottom: 0; }
+.slide h4 { margin-top: 4px; }
+
+.slide:nth-child(1) {
+  background: #eee url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/409269/food-drink-01.jpg") no-repeat top left;
+}
+.slide:nth-child(2) {
+  background: #eee url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/409269/food-drink-02.jpg") no-repeat top left;
+}
+.slide:nth-child(3) {
+  background: #eee url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/409269/food-drink-03.jpg") no-repeat top left;
+}
+.slide:nth-child(4) {
+  background: #eee url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/409269/food-drink-04.jpg") no-repeat top left;
+}
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <button class="btn-prev">&laquo;</button>
+        <div class="slides-container">
+          <div class="slides">
+            <div class="slide">
+              <div class="slide-text">
+                <h2>Slide 1</h2>
+                <h4>Text for slide 1</h4>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="slide-text">
+                <h2>Slide 2</h2>
+                <h4>Text for slide 2</h4>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="slide-text">
+                <h2>Slide 3</h2>
+                <h4>Text for slide 3</h4>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="slide-text">
+                <h2>Slide 4</h2>
+                <h4>Text for slide 4</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-next">&raquo;</button>
+      </div>
+
+      <script>
+          var cc = 0;
+          var slides_length = $('.slides .slide').length;
+          $('.btn-prev').click(function(){
+              
+              cc = cc === 0 ? -(slides_length-1) : ++cc
+              $('.slides').animate({left:`${cc * 100}%`},600,function(){
+                console.log($(this).css('left'))
+              })
+              
+          })
+          $('.btn-next').click(function(){
+              cc = --cc % slides_length ;
+              $('.slides').animate({left:`${cc * 100}%`},600)
+          })
+      </script>
+</body>
+</html>

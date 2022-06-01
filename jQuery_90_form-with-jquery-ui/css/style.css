@@ -1,0 +1,51 @@
+* { box-sizing: border-box; }
+body {
+  background-color: #eee;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  background-color: #fff;
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.container h1 { text-align: center; }
+
+form > .ui-widget{
+  margin-bottom: 20px;
+}
+
+.ui-widget label{
+  display: block;
+  font-weight: bold;
+}
+
+/* 수정 시작 */
+/* .ui-button{width: 100%;} */
+.ui-selectmenu-button.ui-button{
+width: 100%;
+}
+
+#category.ui-button, #startDate.ui-button{
+  background: none;
+  width : 100%;
+}
+
+.ui-widget .ui-spinner,  #experience{width: 100%;}
+fieldset{margin-bottom:20px;}
+
+#progress{
+  position: relative;
+  height: 32px;
+}
+
+.pct{
+  position: absolute;
+  width: 100%;
+  text-align:center;
+  line-height: 32px;
+  font-size: 12px;
+  color: #444
+}

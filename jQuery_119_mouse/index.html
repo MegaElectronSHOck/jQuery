@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <figure>
+        <img src="https://placehold.jp/150x150.png" alt="">
+        <figcaption>title</figcaption>
+    </figure>
+    <script>
+
+        /*
+            clientX, clientY //브라우저 기준  (브라우저를 줄였을때 screen과 차이가있음)
+            offsetX, offsetY // 이벤트가 일어난 그 요소
+            pageX, pageY // 전체 문서 (document) 기준
+            screenX, screenY // 모니터 기준
+
+        */
+        
+        document.addEventListener('mousemove',function(e){
+            console.log(e.clientX, e.clientY) // 브라우저 기준 위치
+        })
+
+        var target = document.querySelector('figure')
+        target.addEventListener('mousemove',function(e){
+            console.log(e.offsetX, e.offsetY) // 
+        })
+
+        target.addEventListener('mousemove',function(e){
+            console.log(e.pageX, e.pageY) // 
+        })
+    </script>
+</body>
+</html>

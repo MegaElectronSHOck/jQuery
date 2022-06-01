@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Form Elements With jQuery UI #1</title>
+  <link rel='stylesheet prefetch' href='http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+  <form>
+    <div id="progress">
+      <div class="pct"><span>0</span>% Completed</div>
+    </div>
+    <h1>jQuery UI Form Elements</h1>
+    <div class="ui-widget">
+      <label for="location">Select Location</label>
+      <select name="location" id="location">
+        <optgroup label="Texas">
+          <option value="Fort Worth">Fort Worth</option>
+          <option value="Odessa">Odessa</option>
+          <option value="Muleshoe">Muleshoe</option>
+        </optgroup>
+        <optgroup label="Oklahoma">
+          <option value="Ardmore">Ardmore</option>
+          <option value="Tulsa">Tulsa</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="ui-widget">
+      <label for="category">Select category</label>
+      <input type="text" id="category" class="ui-corner-all ui-button">
+    </div>
+    <div class="ui-widget">
+      <label for="experience">Experience</label>
+      <input type='text' id="experience" />
+    </div>
+    <div class="ui-widget">
+      <label for="startDate">When can you start?</label>
+      <input type='text' id="startDate" class="ui-corner-all ui-button"/>
+    </div>
+    <fieldset>
+      <legend>How did you hear about us?</legend>
+
+      <label for="rdInternet">Internet</label>
+      <input type="radio" id="rdInternet" name="referrer" value="Internet">
+
+      <label for="rdtv">TV</label>
+      <input type="radio" id="rdtv" name="referrer" value="tv ads">
+
+      <label for="rdOther">Other</label>
+      <input type="radio" id="rdOther" name="referrer" value="other">
+    </fieldset>
+    <button id="submit">Submit Form</button>
+  </form>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
+    <script>
+      $('#location').selectmenu({
+        change : function(event, ui){
+          updateProgress();
+        }
+      });
+
+      const availableTags = ['HTML', 'CSS', 'JavaScript', 'jQuery', 'Photoshop', 'illustrator', 'php']
+      $('#category').autocomplete({
+        source : availableTags,
+        change : function(event, ui){
+          updateProgress();
+        }
+      })
+
+      $('#experience').spinner({
+        min :0,
+        max :50,
+        step:1,
+        change : function(event, ui){
+          updateProgress();
+        }
+      })
+
+      $('#startDate').datepicker({
+        minDate: new Date(),
+        maxDate: "+2w", // 오늘부터 2주 +2weeks
+        change : function(event, ui){
+          updateProgress();
+        }
+      })
+      $('#startDate').datepicker('setDate', new Date());
+
+      $( "input[type='radio']" ).checkboxradio();
+      $('#submit').button({
+        disabled : true
+      });
+
+      $( "#progress" ).progressbar({
+      value: 0
+    });
+
+    $('input').change(function(){ // checkbox를 위한 구문 
+      updateProgress();
+    })
+
+    function updateProgress(){
+      var $progress = 0,
+          $itemCount = 5,
+          $itemCompleted = 0;
+      var $location = $('#location option:selected').val(),
+          $category = $('#category').val(),
+          $experience = $('#experience').val(),
+          $date = $('#startDate').val(),
+          $referrer = $('input[type="radio"]:checked').val();
+
+          if($location){$itemCompleted++; console.log('location')} ;
+          if($category)$itemCompleted++;
+          if($experience)$itemCompleted++;
+          if($date)$itemCompleted++;
+          if($referrer)$itemCompleted++;
+
+          $progress = ($itemCompleted / $itemCount) * 100;
+          $('#progress').progressbar('option','value',$progress);
+          $('.pct span').text($progress);
+
+          if($progress == 100){ 
+            $('#submit').button({
+              disabled : false
+            })
+          }
+    }
+    </script>
+</body>
+</html>

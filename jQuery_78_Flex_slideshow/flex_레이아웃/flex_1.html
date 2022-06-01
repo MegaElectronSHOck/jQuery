@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{display: flex; flex-direction:column; }
+        .contain_1{width: 200px; height: 100px; background: blue; order:2; }
+        .contain_2{width: 200px; height: 100px; background: green; order:1; }
+        /* 
+
+        --- 부모에 지정 ---
+        order : flex 사용시 컨텐츠의 순서를 바꿈 -> -1사용시 가장 최상단 올라감
+        flex-direction : column ;   row플렉스는 기본 왼쪽 정렬이나 세로 정렬로 바꿈
+        flex-wrap : nowrap (wrap : 떨어뜨림) wrap-reverse;
+
+        justify-content : 축 방향을 정렬 (center, flex-start, flex-end, space-between(마진을 나란히 나눠가짐(양쪽끝 마진은 없음)), space-around(마진을 나눠가진(양쪽 끝 마진도 동일함)))
+        align-items : center, flex-start, flex-end;
+        align-content : (flex-wrap이 wrap인 상태에서 테스트 가능, 떨어질때 자기 공간만 차지하고 떨어뜨린다), flex-start, flex-end, center, space-between, space-around 
+        align-self : end; 각 컨텐트 엘리먼트 각각을 지정
+
+        --- 각각의 아이템에서 지정 ---
+        flex-grow : 만약 item마다 1 : 2 : 1로 지정할경우 남은 여백을 1 : 2: 1의 비율로 각 아이템에 나눠 갖는다.
+        flex-basis : flex-grow시 남은 여백을 나눠 갖지만 flex-basis를 0으로 하는순간 각 아이템들의 점유 공간을 0으로 만들어 전체가 여백이 되버리므로 전체를 1:2:1의 비율로 다시 나눠 갖게 된다.
+        flex-shrink : (그냥 flex라고 축약할수있다.) 그냥 아이템 자체의 공간을 1:2:1의 비율로 나눠갖는다. (마치 flex-basis가 0인거 처럼);
+                      첫번째 아이템에는 flex를 넣지않고 두번째 아이템에만 flex를 1로 설정할경우 첫번째 아이템은 고정 두번째 아이템의 너비만 유동적으로 움직인다.
+        
+        */
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="contain_1"></div>
+        <div class="contain_2"></div>
+    </div>
+    
+</body>
+</html>

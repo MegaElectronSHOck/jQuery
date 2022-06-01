@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+
+
+
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button>Get External Content</button>
+<script>
+    $('button').click(function(){
+        // $('#div1').load('demo_test.txt p')
+
+        /*
+            url : 파일 경로
+            reponseTxt : 서버에 요청이 완료되면 결과 내용이 저장
+            statusTxt : 서버에 요청을 보내면, 요청의 상태
+            status : 서버에 요청을 보내면, 요청의 상태
+            xhr :요청한 오브젝트
+            $('#div1').load('경로',요청이 완료되면 할일 function(responsTxt, statusTxt, xhr){...실제할일...})
+        */
+        $('#div1').load('demo_test.txt', function(responseTxt, statusTxt, xhr){
+            console.log('로드할 파일의 내용 : ' + responseTxt)
+            console.log('로드할 파일과의 연결상태 : ' + statusTxt)
+            console.log('요청의 상태 : ' + xhr)
+            console.log('요청한 파일의 상태 : ' + xhr.status)
+
+            if(statusTxt == 'success' && xhr.status == 200){
+                alert('파일이 준비되었습니다.')
+            }else{
+                alert('파일이 준비되지 않았습니다.')
+            }
+        })
+    })
+</script>
+</body>
+</html>

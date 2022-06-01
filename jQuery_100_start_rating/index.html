@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://kit.fontawesome.com/c26998f710.js" crossorigin="anonymous"></script>
+    <style>
+        .fa-star {
+	color:#F05522;
+}
+        .star_wrap{width: 18px; display: inline-block;}
+       .star{width: 0%; overflow: hidden;}
+    </style>
+</head>
+<body>
+    <h2>별점 표시하기</h2>
+<div class="review">
+	<div class="rating" data-rate="4">
+        <div class="star_wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+        <div class="star_wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+        <div class="star_wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+        <div class="star_wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+        <div class="star_wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+	</div>
+	<div class="rating" data-rate="2.3">
+		<div class="star_wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+        <div class="star_wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+        <div class="star_wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+        <div class="star_wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+        <div class="star_wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+	</div>	
+</div>
+    <script>
+        var $rating = $('.rating');
+        $rating.each(function(idx, item){
+            var $dataRate = $(this).attr('data-rate'),
+                $dataRate_int = parseInt($dataRate.split('.')[0]),
+                $dataRate_dec = parseInt($dataRate.split('.')[1]),
+                $stars = $(this).find('.star_wrap .star');
+                for(let i =0; i < $dataRate_int;i++){
+                    $stars.eq(i).css({width:'100%'})
+                }
+                $stars.eq($dataRate_int).css({width:`${$dataRate_dec*10}%`})
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js" ></script>
+    <style>
+        body {  background-color: #f7fafd; }
+.countdown{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}
+#clock {
+  padding: 0 20%;
+  text-align: center;
+  margin-top: 20px;
+  border: none;
+  box-shadow: 0 0 10px rgba(96,134,181,.3);
+}
+
+.clock-section { display: inline-block; }
+
+.clock-section .value {
+  height: 100px;
+  line-height: 100px;
+  background-color: #333;
+  text-align: center;
+  border-radius: 10px;
+  padding:0 20px;
+  color:white;
+}
+.value {
+  font-size: 50px;
+}
+.clock-label {
+  text-align: center;
+  padding-top: 4px;
+  font-size: 11px;
+}
+    </style>
+</head>
+<body>
+    <div class="countdown">
+        <div id="clock" class="card card-default">
+          <div class="card-body">
+            <h2 class="card-title mb-4">Countdown to 2022</h2>
+            <div class="clock-section">
+              <div id="days" class="value text-warning">00</div>
+              <div class="clock-label">DAYS</div>
+            </div>
+            <div class="clock-section">
+              <div id="hours" class="value text-warning">00</div>
+              <div class="clock-label">HOURS</div>
+            </div>
+            <div class="clock-section">
+              <div id="minutes" class="value text-warning">00</div>
+              <div class="clock-label">MINUTES</div>
+            </div>
+            <div class="clock-section">
+              <div id="seconds" class="value text-warning">00</div>
+              <div class="clock-label">SECONDS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <script>
+        // momentjs.com
+  
+        var targetDate = moment('5, 12, 2022','MM, DD, YYYY' ); // 목표일
+        console.log(targetDate)
+        // console.log(targetDate._i)
+        console.log(moment())
+        var $days = $('#days'),
+            $hours = $('#hours'),
+            $minutes = $('#minutes'),
+            $seconds = $('#seconds');
+
+        setInterval(function(){
+            var now= moment(); // 지금 시점의 시각
+            var timeLeft = moment.duration(targetDate.diff(now))
+          
+            updateClock(timeLeft)
+        },1000)
+
+        function updateClock(rt){
+            var days = Math.floor(rt.asDays()),
+                hrs = Math.floor(rt.asHours() % 24),
+                mins = Math.floor(rt.asMinutes() % 60),
+                secs = Math.floor(rt.asSeconds() % 60);
+            
+            $days.text(filterNum(days));
+            $hours.text(filterNum(hrs));
+            $minutes.text(filterNum(mins))
+            $seconds.text(filterNum(secs))
+
+        }
+
+        function filterNum(num){
+            var formattednum = num;
+            if(num < 10){
+                formattednum = '0' + formattednum;
+            }
+            return(formattednum)
+        }
+    </script>
+</body>
+</html>

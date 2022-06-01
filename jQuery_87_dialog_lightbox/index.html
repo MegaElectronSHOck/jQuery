@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        dialog{
+	border:2px solid black;
+	background:red;
+	color:#fff;
+}
+dialog span{
+	display:block;
+	cursor:pointer;
+}
+    </style>
+</head>
+<body>
+    <button>
+        open dialog
+    </button>
+    <hr/>
+    <dialog open=""> <!-- dialog란 속성의 open을 아예 없애야 dialog가 사라진다. 호환성이 떨어져 잘 쓰지 않는다.-->
+        html5 dialog window
+        <span>close</span>
+    </dialog>
+</body>
+</html>

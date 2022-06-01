@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <style>
+        *{margin:0; padding:0}
+        ul,li{list-style:none;}
+        .container{
+            width: 700px; 
+            margin:0 auto;
+            
+        }
+        .slide_wrapper{
+            width: 660px;
+            margin:0 auto;
+            height: 200px;
+            background: green;
+            overflow: hidden;
+        }
+        .slides{
+            position: relative;
+            height: 200px;
+        }
+        .slides > li{
+            position: absolute;
+            left:0; top:0;
+            width: 200px;
+            height: 200px;
+            background: rgba(0,0,0,.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slide_wrapper">
+            <ul class="slides">
+                <li>slide01</li>
+                <li>slide02</li>
+                <li>slide03</li>
+                <li>slide04</li>
+                <li>slide05</li>
+            </ul>
+            
+        </div>
+    </div>
+    <script>
+        var $slideWrapper = $('.slide_wrapper'),
+            $slides = $slideWrapper.find('.slides'),
+            $slide = $slides.find('li'),
+            $slideWidth = 200,
+            $slideMargin = 30,
+            $moveAmt;
+
+            $slides.append($slide.clone().addClass('clone')).prepend($slide.clone().addClass('clone'))
+
+            function slideLayout(sw, sm){
+                var newSlides = $slides.find('li');
+                    $moveAmt = sw+sm;
+                
+                newSlides.each(function(idx){
+                    $(this).css({left:$moveAmt*idx+'px'})
+                })
+
+                
+
+            }
+            slideLayout($slideWidth, $slideMargin)
+
+
+    </script>
+</body>
+</html>

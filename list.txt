@@ -1,0 +1,80 @@
+슬라이드 쇼 
+08, 09 37(siema) 55(bxslider), 59(bxslider), 78, 110(완결판)
+
+메뉴바
+14 15 16 42(arcodian : jquery-ui 위젯), 82
+
+탭메뉴
+
+18 19(lib:jquery-ui) 62(jquery-ui), 83, 105(url), 115(url)
+
+라이트박스
+20 28, 88(bootstrap), 88(lightbox.js), 89, 102(fresco.js)
+
+페럴럭스
+21, 75, 108(fullpage.js), 76(fixed의 높이값 이동으로 페럴럭스효과), 77(skorllr.js :library), 81, 94(parallax.js), 95(WOW.js)
+서브메뉴
+23, 70
+
+로딩바
+25, 73
+
+에니메이트
+26, 
+
+종합
+28 46(materialize : 그리드, 슬라이드, 아이콘, 버튼, 색깔 등등)
+
+form
+30, 35(validate.js), 43, 63(bootstrap), 64, 90(jquery-ui)
+
+레티나
+34
+
+가로 세로 비율
+31 36 74
+
+sns레이아웃
+40(masonry), 48(json을 활용한 masonry), 49(masonry loadmore)
+
+정렬
+41(mixitup)
+
+텍스트 fit
+84(fitText)
+
+햄버거버튼
+44, 45
+
+날씨 
+47, 107(openweathermap)
+
+모바일
+52(detectmobilebrowser.js, window.devicePixelRatio)
+
+이미지 부드럽게 처리
+64(foggy)
+
+테이블
+69(페이지번호로 나누기, tablesort library)
+
+원형 차트 에니메이션 
+72
+
+Ajax
+83
+별점주기
+91, 100(소수점까지)
+
+transform 에니메이션
+99(transform.js)
+
+목표일 카운트
+104(moment.js)
+
+svg
+51, 109
+
+animation.css
+114
+

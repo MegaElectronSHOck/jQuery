@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <style>
+ 
+/* Demo styles. */
+td, th {
+	text-align: left;
+	padding: .5rem 1rem;
+}
+
+tbody tr:nth-child(odd) {
+	background-color: #ccc;
+}
+
+@media screen and (max-width:768px){
+    th:last-child, td:last-child{
+        display: none;
+    }
+}
+@media screen and (max-width:480px){
+    th:nth-child(2), td:nth-child(2){
+        display: none;
+    }
+    thead{
+        display: none;
+    }
+}
+@media screen and (max-width:400px){
+    table{width: 100%;}
+    td{display: block !important;}
+    td{
+        border-bottom: 1px solid #eee; 
+        display: grid !important; 
+        grid-template-columns:1fr 2fr;
+    }
+    td:before{font-weight:bold;}
+    td:nth-of-type(1):before{content:'Name'}  /* nth-child는 다른종류의 태그들과 섞여있어도 그중의 순서를 찾는다 */
+    td:nth-of-type(2):before{content:'Location'} /* nth-of-type 섞여있어도 한 태그만 골라서 순서를 찾는다 */
+    td:nth-of-type(3):before{content:'Speciality'}
+    td:nth-of-type(4):before{content:'Abailablity'}
+    td:nth-of-type(5):before{content:'Email'}
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>Our support staff</h1>
+
+    <div class="wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Speciality</th>
+                    <th>Availability</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Caroline Adams</td>
+                    <td>United States</td>
+                    <td>WordPress</td>
+                    <td>9AM - 5PM CET</td>
+                    <td>caroline.adams@company.com</td>
+                </tr>
+                <tr>
+                    <td>James Burrows</td>
+                    <td>Scotland</td>
+                    <td>JavaScript API</td>
+                    <td>9AM - 5PM GMT+2</td>
+                    <td>james.burrows@company.com</td>
+                </tr>
+                <tr>
+                    <td>Charlotte Pelletier</td>
+                    <td>France</td>
+                    <td>CSS Implementations</td>
+                    <td>9AM - 5PM GMT</td>
+                    <td>charlotte.pelletier@company.com</td>
+                </tr>
+                <tr>
+                    <td>Benjamin Wilson</td>
+                    <td>South Africa</td>
+                    <td>Hosting</td>
+                    <td>9AM - 5PM GMT-5</td>
+                    <td>benjamin.wilson@company.com</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

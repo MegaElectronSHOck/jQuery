@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        html, body{width: 100%; height: 100%;}
+        body:after{ /* 중요 */
+            content:'';
+            position: absolute;
+            background:rgba(0,0,0,1);
+            left:0; right:0; top:0; bottom:0;
+            display: none;
+            z-index:-1;
+        }
+        body.active:after{
+            display:block;
+        }
+        .dialog{
+	border:2px solid black;
+	background:red;
+	color:#fff;
+    position: absolute;
+    left:50%; top:50%;
+    transform:translate(-50%, -50%);
+    display: none;
+   
+    
+}
+
+.dialog span{
+	display:block;
+	cursor:pointer;
+}
+  </style>
+</head>
+<body>
+    <button>
+        open dialog
+    </button>
+    <hr/>
+    <div class="dialog"> <!-- dialog란 속성의 open을 아예 없애야 dialog가 사라진다. 호환성이 떨어져 잘 쓰지 않는다.-->
+        html5 dialog window
+        <span>close</span>
+    </div>
+    <script>
+        $('button').click(function(){
+            $('.dialog').toggle();
+            $('body').toggleClass('active')
+        })
+    
+    </script>
+</body>
+</html>

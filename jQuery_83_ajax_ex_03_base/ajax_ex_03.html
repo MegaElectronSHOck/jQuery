@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button>Get External Content</button>
+<script>
+    $('button').click(function(){
+      // ajax방식
+
+      //$.ajax({경로, 동기화여부, 성공하면 할일})
+      //$.ajax({url:'경로', async : false, success:function(result){}})
+        
+      $.ajax({url : 'demo_test.txt', async:false, success:function(result){
+        $('div').html(result);
+      }})
+      $.ajax({url : 'demo.js',dataType:'script'})
+    })
+</script>
+</body>
+</html>

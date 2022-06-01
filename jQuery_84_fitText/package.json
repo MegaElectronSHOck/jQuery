@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "fittext": "^1.0.1",
+    "flowtype": "^2.0.0"
+  }
+}

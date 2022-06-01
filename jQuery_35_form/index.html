@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+
+    <style>
+        span.bad{
+            animation: fadeIn 0.5s forwards;
+            background: navy;
+            color:#fff;
+            padding: 5px;
+            white-space: nowrap;
+            border-radius: 10px;
+        }
+
+        @keyframes fadeIn{
+            from{opacity:0; margin-left:50px;}
+            to{opacity: 1; margin-left:20px;}
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="post" novalidate class="sendForm">
+        <fieldset>
+            <legend>Send Message</legend>
+            <P>
+                <label for="userName">Name(최소한 2글자 이상 입력하세요)</label>
+                <input type="text" id="userName" name="username2" />
+            </P>
+            <p>
+                <label for="userEmail">Email</label>
+                <input type="email" id="userEmail" name="useremail" >
+            </p>
+            <p>
+                <label for="userUrl">website</label>
+                <input type="url" id="userUrl" name="userurl" >
+            </p>
+            <p>
+                <label for="userMsg">website</label>
+                <textarea name="usermsg" id="userMsg" cols="30" rows="10"></textarea>
+            </p>
+            <p>
+                <input type="submit" value="send Message"/>
+            </p>
+        </fieldset>
+    </form>
+    <script>
+        // https://validatejs.org/
+        $('.sendForm').validate({
+            rules:{
+                username2 :{  // name속성의 username2
+                    required : true, // required : 안썻을때
+                    minlength :2
+                },
+                useremail :{
+                    required : true,
+                    email : true
+                }
+            },
+            messages : {
+                username2:{
+                    required:'이름은 필수입니다.', // 필수일때 설정(안썻을때)
+                    minlength : '최소 2글자 이상 입력해주세요' // minlength : html 그대로 사용 
+                },
+                useremail : {
+                    required : '이메일도 필수!',
+                    email : '형식을 지켜주세요'
+                }
+            },
+            errorElement : 'span', // 에러메시지는 label로 들어가지만 옵션으로 label을 span으로 바꿀수 있다.
+            errorClass : 'bad',
+            validClass : 'good'
+        })
+
+        
+    </script>
+</body>
+</html>

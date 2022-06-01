@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <h2>current weather</h2>
+    <h3 class="time">현재시간 : </h3>
+    <h3 class="ctemp">현재온도 : </h3>
+    <h3 class="lowtemp">최저온도 :</h3>
+    <h3 class="hightemp">최고온도 :</h3>
+    <h3 class="icon"></h3>
+    <script>
+        $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=37.5683&lon=126.9978&appid=8a2b30e3f25b8a3542904562caefe00d&units=metric', function(result){
+            var ct = result.dt;
+            console.log(result)
+            function convertTime(t){
+                var ot = new Date(t*1000);
+                console.log(ot)
+                var hr = ot.getHours();
+                var m = ot.getMinutes();
+                var s = ot.getSeconds();
+                return hr + ':' + m + ':' + s;
+            }
+            var currentTime = convertTime(ct)
+            console.log(currentTime)
+            $('.time').append(currentTime);
+            $('.ctemp').append(result.main.temp)
+            $('.lowtemp').append(result.main.temp_min)
+            $('.hightemp').append(result.main.temp_max);
+            var wiconUrl = `<img src="http://openweathermap.org/img/wn/${result.weather[0].icon}.png" />`
+            $('.icon').html(wiconUrl);
+
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+    <style>
+        .answer{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="qna_list">
+        <h3 class="question">
+            Question title
+        </h3>
+        <div class="answer">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, dolorum hic! Aliquam quasi facilis blanditiis, beatae cupiditate officiis, voluptates, tempore error iure in accusantium temporibus modi reprehenderit molestias? Minus, architecto?/</p>
+        </div>
+        <h3 class="question">
+            Question title
+        </h3>
+        <div class="answer">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, dolorum hic! Aliquam quasi facilis blanditiis, beatae cupiditate officiis, voluptates, tempore error iure in accusantium temporibus modi reprehenderit molestias? Minus, architecto?/</p>
+        </div>
+        <h3 class="question">
+            Question title
+        </h3>
+        <div class="answer">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, dolorum hic! Aliquam quasi facilis blanditiis, beatae cupiditate officiis, voluptates, tempore error iure in accusantium temporibus modi reprehenderit molestias? Minus, architecto?/</p>
+        </div>
+    </div>
+    <script>
+        // 순수 jquery
+        // $('.question').click(function(){
+        //     $(this).next().slideToggle();
+        //     $(this).next().siblings('.answer').slideUp()
+        // })
+
+        // jquery 위젯활용
+        var $collapsible = $('.qna_list').accordion({
+            animate : 200,
+            event:'mouseover', // 마우스 오버시 컨텐츠 보임
+            collapsible: true // 컨텐츠를 모두 닫을수 있다
+            });
+
+
+    </script>
+</body>
+</html>

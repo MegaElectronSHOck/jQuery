@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/detectmobilebrowser/detectmobilebrowser.js"></script>
+</head>
+<body>
+    <h1>PC화면</h1>
+    <h2>PC화면 입니다.</h2>
+    <script>
+        // if($.browser.mobile === true){
+        //     location.href = './mobile/'; // 주소 변경(이동)
+        // }else{
+            
+            
+        // }
+        // 위 라이브러리를 불러오지 않고서도 아래 자바스크립트 코드만으로도 사용가능
+     
+        console.log(window.devicePixelRatio)
+        if(Number(window.devicePixelRatio) > true){
+            location.href = './mobile/'; // 주소 변경(이동)
+        }else{
+            console.log('아님')
+        }
+    </script>
+</body>
+</html>

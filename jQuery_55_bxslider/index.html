@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./node_modules/bxslider/dist/jquery.bxslider.min.css"> -->
+    <script src="./node_modules/bxslider/dist/jquery-3.1.1.min.js"></script>
+    <script src="./node_modules/bxslider/dist/jquery.bxslider.min.js"></script>
+    <script src="https://kit.fontawesome.com/c26998f710.js" crossorigin="anonymous"></script>
+    <style>
+        .slideWrap{
+            width: 800px;
+            margin: 2em auto;
+            position: relative;
+        }
+        .controls .bx-prev, .controls .bx-next{
+            position: absolute; top: 50%; transform:translateY(-50%); font-size:3em;
+        }
+        .controls .bx-prev{
+            right: calc(100% + 40px)
+        }
+        .controls .bx-next{
+            left: calc(100% + 40px)
+        }
+
+
+        .img_controls .imgcontrols span a{
+           width: 60px; height: 60px;
+           background-repeat: no-repeat;
+           background-size: 100% 100%;
+           display: block;
+           text-indent:-9999em;
+        }
+        .img_controls .imgcontrols .prev a{
+            background-image: url(./img/left.png);
+        }
+        .img_controls .imgcontrols .next a{
+            background-image: url(./img/right.png);
+        }
+
+        .basic_slider img, .img_controls_slider img, .manual_control_slider img{width: 800px; height: 400px;}
+    </style>
+   
+   
+</head>
+<body>
+   <div class="slideWrap controls">
+        <div class="basic_slider">
+            <img src="img/slide_1.jpg" alt="">
+            <img src="img/slide_2.jpg" alt="">
+            <img src="img/slide_3.jpg" alt="">
+            <img src="img/slide_4.jpg" alt="">
+        </div>
+   </div>
+
+    <div class="slideWrap img_controls">
+        <div class="img_controls_slider">
+            <img src="img/slide_1.jpg" alt="">
+            <img src="img/slide_2.jpg" alt="">
+            <img src="img/slide_3.jpg" alt="">
+            <img src="img/slide_4.jpg" alt="">
+        </div>
+        <div class="imgcontrols">
+            <span class="prev"></span>
+            <span class="next"></span>
+        </div>
+   </div>
+   <div class="slideWrap multipleWrap">
+    <div class="multiple_slider">
+        <img src="img/slide_1.jpg" alt="">
+        <img src="img/slide_2.jpg" alt="">
+        <img src="img/slide_3.jpg" alt="">
+        <img src="img/slide_4.jpg" alt="">
+        <img src="img/slide_1.jpg" alt="">
+        <img src="img/slide_2.jpg" alt="">
+        <img src="img/slide_3.jpg" alt="">
+        <img src="img/slide_4.jpg" alt="">
+    </div>
+   
+</div>
+   <div class="slideWrap activeWrap">
+    <ul class="active_slider">
+        <li><img src="img/slide_1.jpg" alt=""><h2>slide1 title</h2></li>
+        <li><img src="img/slide_2.jpg" alt=""><h2>slide2 title</h2></li>
+        <li><img src="img/slide_3.jpg" alt=""><h2>slide3 title</h2></li>
+        <li><img src="img/slide_4.jpg" alt=""><h2>slide4 title</h2></li>
+      
+    </ul>
+   
+</div>
+
+<div class="slideWrap manualWrap">
+    <div class="manual_control_slider">
+        <img src="img/slide_1.jpg" alt="">
+        <img src="img/slide_2.jpg" alt="">
+        <img src="img/slide_3.jpg" alt="">
+        <img src="img/slide_4.jpg" alt="">
+    </div>
+    <div class="manual_controls">
+        <span class="prev"><i class="fa-solid fa-caret-left"></i></span>
+        <span class="next"><i class="fa-solid fa-caret-right"></i></span>
+    </div>
+</div>
+   <script>
+       $('.basic_slider').bxSlider({
+           nextText:'<i class="fa-solid fa-chevron-right"></i>',
+           prevText:'<i class="fa-solid fa-chevron-left"></i>',
+           speed: 500,
+           pager:false
+       })
+
+       $('.img_controls_slider').bxSlider({
+        //   controls:false,
+          pager: false,
+          prevSelector : $('.img_controls .imgcontrols .prev'),
+          nextSelector : $('.img_controls  .imgcontrols .next'),
+           speed: 500
+        //    pager:false
+       })
+
+       $('.multiple_slider').bxSlider({
+        minSlides: 3,
+        maxSlides: 3,
+        moveSlides : 1,
+        slideWidth:400,
+        slideMargin:10
+       })
+       $('.active_slider').bxSlider({
+        onSliderLoad:function(currentIndex){
+            $('.active_slider li').find('h2').css({background: 'blue', color:'white'})
+        },
+        onSlideAfter: function($slideElement){
+            console.log($slideElement)
+            $slideElement.find('h2').css({background: 'blue', color:'white'})
+        },
+        onSlideBefore:function($slideElement){
+            $slideElement.find('h2').css({background:'white', color:'black'})
+        }
+       })
+
+       var test = $('.manual_control_slider').bxSlider({
+           controls:false,
+           pager:false
+       })
+       $('.manual_controls').find('.next').click(function(){
+           test.goToNextSlide()
+       })
+       $('.manual_controls').find('.prev').click(function(){
+           test.goToPrevSlide()
+       })
+       
+   </script>
+</body>
+</html>

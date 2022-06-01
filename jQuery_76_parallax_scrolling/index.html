@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./node_modules/jquery-mousewheel/jquery.mousewheel.js"></script>
+    <style>
+        *{margin:0; padding:0;}
+        .parallax .tit{
+            width: 100%;
+        }
+        .parallax .tit img{
+            height: 1200px;
+        }
+        .parallax{position: relative;}
+        .mSection01{top:0px;}
+        .mSection02{top:1200px;}
+        .mSection03{top:2400px;}
+    </style>
+</head>
+<body>
+    <div class="mwrap">
+        <div class="mContents" id="contents">
+            <div class="parallax">
+                <div class="mSection01">
+
+                    <div class="tit">
+                        <img src="images/image_1.jpg" alt="Shinangchon은 자연과 함께합니다"/>
+                        <!-- <div class="arrow">
+                            <a href="#"><img src="images/index/arrow_up.png" alt="위로"></a>
+                            <a href="#"><img src="images/index/arrow_down.png" alt="아래로"></a>
+
+                        </div> -->
+                    </div>
+                    <!-- <p class="txt"><img src="images/index/mSection01_txt.png" alt="Nuture" /></p> -->
+                </div>
+                <div class="mSection02">
+                    <div class="tit">
+                        <img src="images/image_2.jpg" alt="Shinangchon은 자연과 함께합니다"/>
+                        <!-- <div class="arrow">
+                            <a href="#"><img src="images/index/arrow_up.png" alt="위로"></a>
+                            <a href="#"><img src="images/index/arrow_down.png" alt="아래로"></a>
+
+                        </div> -->
+                    </div>
+                    <!-- <p class="txt"><img src="images/index/mSection01_txt.png" alt="Nuture" /></p> -->
+                </div>
+                <div class="mSection03">
+                    <div class="tit">
+                        <img src="images/image_3.jpg" alt="Shinangchon은 자연과 함께합니다"/>
+                        <!-- <div class="arrow">
+                            <a href="#"><img src="images/index/arrow_up.png" alt="위로"></a>
+                            <a href="#"><img src="images/index/arrow_down.png" alt="아래로"></a>
+
+                        </div> -->
+                    </div>
+                    <!-- <p class="txt"><img src="images/index/mSection01_txt.png" alt="Nuture" /></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var $section = $('.parallax > div');
+            $sectionInfo = [];
+            $currentSection = 0;
+
+            $section.each(function(idx){
+                console.log('테스트')
+                var $this = $(this);
+                // $upBtn = $this.find('.arrow > a:eq(0)');
+                // $downBtn = $this.find('.arrow > a:eq(2)');
+                $sectionInfo.push($this.offset().top);
+
+                // $upBtn.click(function(e){
+                //     e.preventDefault();
+                //     if(idx === 0){ return;}
+                //     move(idx-1)
+                    
+                // })
+                // $downBtn.click(function(e){
+                //     e.preventDefault();
+                //     if(idx === sectionInfo.length-1){return;}
+                //     move(idx+1)
+                    
+                // }) 
+            })
+
+            // function move(idx){
+            //     var tt = $sectionInfo[idx];
+            //     $('html, body').stop().animate({scrollTop: tt}, 600);
+            //     $currentSection = 1;
+            // }
+
+            $section.css({position: 'fixed'});
+
+            $(window).scroll(function(){
+                var sct= $(this).scrollTop();
+                $section.each(function(idx){
+                    var $this = $(this);
+                    var $newTop = $sectionInfo[idx] - sct;
+                    if(sct > $sectionInfo[idx]){
+                        $newTop *= 0.5
+                    }
+                    $this.css({top:$newTop})
+                })
+            })
+
+            // $section.mousewheel(function(event) { 
+            //     // console.log(event.deltaX, event.deltaY, event.deltaFactor);     
+            //     var excuted = false; // 휠을 움직일때 마다 수시로 적용되는걸 막기 위해 스위치를 적용
+            //     if(!excuted){
+            //         if(event.deltaY == -1){
+            //             move($currentSection + 1)
+            //         }else{
+            //             move($currentSection - 1)
+            //         }
+            //         excuted = true;
+            //     }
+            //     setTimeout(function(){excuted=false}, 300);
+            // });
+    </script>
+</body>
+</html>

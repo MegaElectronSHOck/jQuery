@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js" ></script>
+    <style>
+        .wrapper{display: block; margin:400px auto; width: 100%; text-align: center;  position: relative;}
+        .wrapper div{display: inline-block; font-size: 50px; background: black; color: white; width: 3em; height: 3em; line-height: 3em; border-radius:10px;}
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="days"></div>
+        <div class="hours"></div>
+        <div class="minutes"></div>
+        <div class="seconds"></div>
+    </div>
+
+    <script>
+        var targetDate = moment('5/12/2022')
+
+        setInterval(function(){
+            var now = moment();
+            var timeLeft = moment.duration(targetDate.diff(now));
+
+            $('.days').text(timeLeft._data.days + '일');
+            $('.hours').text(timeLeft._data.hours + '시');
+            $('.minutes').text(timeLeft._data.minutes + '분');
+            $('.seconds').text(timeLeft._data.seconds + '초');
+
+
+
+
+
+            console.log(timeLeft._data.days + '일')
+            console.log(timeLeft._data.hours + '시')
+            console.log(timeLeft._data.minutes + '분')
+            console.log(timeLeft._data.seconds + '초');
+            console.log('----------------')
+           
+            
+          
+        },1000)
+
+
+    </script>
+</body>
+</html>

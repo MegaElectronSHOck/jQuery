@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        svg{border:1px solid blue;}
+        svg line{
+            stroke:blue;
+            stroke-width:10px;
+            stroke-dasharray:220;
+            stroke-dashoffset:220;
+           
+        }
+        svg:hover line{
+            animation: dash 0.5s linear forwards;
+        }
+        @keyframes dash{
+            from{stroke-dashoffset:220;}
+            to{ stroke-dashoffset:0;}
+        }
+
+    </style>
+</head>
+<body>
+    <svg width="220" height="220" >
+    <line x1="0" y1="110" x2="220" y2="110"></line>
+    </svg>
+</body>
+</html>

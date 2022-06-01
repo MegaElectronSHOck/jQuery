@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <style>
+        table{color: white;  text-align: center; font-size: 16px;}
+        td{padding:10px 20px;}
+        thead td{background: black;   padding:10px 0;}
+        tbody td{background: rgb(80,80,80,1);}
+    </style>
+</head>
+<body>
+    <h2>weatehr forecast</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>시간</td>
+                <td>온도</td>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+    <script>
+        var $content = $('tbody')
+        $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=37.5683&lon=126.9978&appid=8a2b30e3f25b8a3542904562caefe00d&units=metric',function(result){
+            var ft_array = result.hourly;
+            
+            ft_array.forEach(function(item, idx){
+                var $time = new Date(item.dt * 1000);
+                var $tr = $('<tr></tr>');
+                $tr.append(`<td>${convertTime($time)}</td>`);
+                $tr.append(`<td>${item.temp} 도</td>`)
+                $content.append($tr)
+                  
+            })
+        })
+
+        function convertTime($time){
+            
+            var hr = $time.getHours() % 12;
+            // var m = $time.getMinutes();
+            // var s = $time.getSeconds();
+
+            return `${day}일 ${hr} 시`
+        }
+
+        // $.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=37.5683&lon=126.9978&appid=8a2b30e3f25b8a3542904562caefe00d&units=metric', function(result){
+        //     var ct = result.dt;
+        //     function convertTime(t){
+        //         var ot = new Date(t*1000);
+        //         console.log(ot)
+        //         var hr = ot.getHours();
+        //         var m = ot.getMinutes();
+        //         var s = ot.getSeconds();
+        //         return hr + ':' + m + ':' + s;
+        //     }
+        //     var currentTime = convertTime(ct)
+        //     $('.time').append(currentTime);
+        //     $('.ctemp').append(result.main.temp)
+        //     $('.lowtemp').append(result.main.temp_min)
+        //     $('.hightemp').append(result.main.temp_max);
+        //     var wiconUrl = `<img src="http://openweathermap.org/img/wn/${result.weather[0].icon}.png" />`
+        //     $('.icon').html(wiconUrl);
+
+
+        // })
+    </script>
+</body>
+</html>

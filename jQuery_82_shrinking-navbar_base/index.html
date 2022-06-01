@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Shrinking Nav Bar</title>
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/master.css">
+    </head>
+    <body>
+        <header id="main-header">
+            <nav>
+                <img src="images/logo.svg" alt="Logo" id="logo">
+
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="container">
+            <main>
+                <p>The start of your content.</p>
+                <p>The middle of your content.</p>
+                <p>The end of your content.</p>
+            </main>
+
+            <footer>
+                <hr>
+
+                <p><small><em>This page is created by Adi Purdila as a demo for a shrinking nav bar.</em></small></p>
+            </footer>
+        </div> <!-- end container -->
+
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/scripts.js"></script>
+        <script>
+            var $window = $(window),
+                $mainHeader = $('#main-header'),
+                $defaultLogo = 'images/logo.svg',
+                $threshold = $mainHeader.outerHeight(),
+                $smallLogo = 'images/logo-shrink.svg',
+                flag = true;
+                $(window).scroll(function(){
+                    var sct = $(this).scrollTop();
+                    if(sct > $threshold){
+                        if(flag){
+                        $mainHeader.addClass('shirink');
+                        switchImage($smallLogo);
+                         }
+                    }else{
+                        if(!flag){
+                        $mainHeader.removeClass('shirink');
+                        switchImage($defaultLogo);
+                    }
+                    }
+                })
+
+                function switchImage(logo){
+                        $mainHeader.find('#logo').fadeOut(400,function(){
+                            $(this).attr('src',logo).fadeIn(200)
+                        })
+                        flag = !flag;
+                }
+
+            
+            //자바스크립트 버전
+            // var $window = window,
+            //     $mainHeader = document.querySelector('#main-header'),
+            //     $logo = $mainHeader.querySelector('#logo'),
+            //     $defaultLogo = 'images/logo.svg',
+            //     $threshold = $mainHeader.offsetHeight,
+            //     $smallLogo = 'images/logo-shrink.svg',
+            //     flag = true;
+              
+            //     $window.addEventListener('scroll',()=>{
+            //         var sct = this.pageYOffset;
+            //         if(sct > $threshold){
+            //             if(flag){
+            //             $mainHeader.classList.add('shirink');
+            //             switchImage($smallLogo)
+            //             }
+            //         }else{
+            //             if(!flag){
+            //             $mainHeader.classList.remove('shirink');
+            //             switchImage($defaultLogo)
+            //             }
+            //         }
+            //     })
+
+            //     function switchImage($newImage) {
+            //         $logo.classList.add('hide');
+            //             setTimeout(()=>{
+            //                 $logo.setAttribute('src',$newImage);
+            //                 $logo.classList.remove('hide')
+            //             },300)
+            //             flag = !flag
+            //     }
+        </script>
+    </body>
+</html>

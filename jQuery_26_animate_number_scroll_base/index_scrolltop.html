@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="robots" content="index, follow">
+<title></title>	
+<link rel="stylesheet" href="css/main.css">
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="js/waypoint.js"></script>
+<script src="js/main.js"></script>
+</head>
+<body>
+	
+	<div class="section1 section"></div>
+	<div class="section2 section">
+		<div class="animate" data-rate="60"></div>
+	</div>
+
+	<script>
+		var flag = false;
+        $(window).scroll(function(){
+            var threshold = $('.section2').offset().top-300;
+            if($(window).scrollTop() >=threshold){
+               
+                
+                if(flag === false){
+                    
+                    var progressRate = $('.animate').attr('data-rate');
+                $({percent:0}).animate({percent:progressRate},{
+                    duration: 1500,
+                    progress : function(){
+                        var now = this.percent;
+                        $('.animate').text(Math.ceil(now)+'%')
+                    }
+                })
+                flag = true;
+            }
+            }
+        })
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

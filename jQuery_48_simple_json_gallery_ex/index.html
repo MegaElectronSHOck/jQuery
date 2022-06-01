@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Chapter 06-02</title>
+<link rel="stylesheet" href="./css/normalize.css">
+<link rel="stylesheet" href="./css/main.css">
+<script src="./js/vendor/modernizr.custom.min.js"></script>
+<script src="./js/vendor/jquery-1.10.2.min.js"></script>
+<script src="./js/vendor/imagesloaded.pkgd.min.js"></script>
+<script src="./js/vendor/masonry.pkgd.min.js"></script>
+<script src="./js/main.js"></script>
+</head>
+<body>
+
+<header class="page-header" role="banner">
+    <div class="inner">
+        <h1 class="site-logo"><a href="#"><img src="./img/logo.png" alt="logo" height="21" width="169"></a></h1>
+    </div>
+</header>
+
+<div class="page-main" role="main">
+    <ul class="gallery" id="gallery"></ul>
+</div>
+    <script>
+        var b = 3
+        var test = b > 10 ? '10보다큼' : b > 8 ? '8보다 큼' : b > 5 ? '5보다큼':"너무작음";
+        console.log(test)
+        //A.next()
+        //A.before()
+        //A.prev()
+        //A.after()
+        //A.siblings()
+        //A.filter('.active')
+        //A.find()
+        //A.children()
+        //A.parent()
+        //A.closet('div')
+
+        $('.gallery').masonry({
+            itemselector : '.gallery-item',
+            columnWidth : 230,
+            gutter:10
+        })
+        $.getJSON('./data/content.json',function(data){
+            var elements = [];
+            
+            $.each(data,function(i,item){
+                var $innerHTML = `<li class="gallery-item is-loading"><a href="${item.images.large}"><img src="${item.images.thumb}" alt="${item.title}"></a></li>`
+                elements.push($($innerHTML).get(0))
+                
+            })
+            $('.gallery').append(elements)
+            $('.gallery').imagesLoaded(function(){
+                $('.gallery').find('li').removeClass('is-loading');
+                // $(elements).removeclass('is-loading') is-loading을 지워주는 다른 방법
+               
+        $('.gallery').masonry('appended', elements ) // <- 에니메이션 효과 준다
+            })
+
+            
+
+            // for(let i =0; i < data.length; i++){
+            //     $('.gallery').append(`<li class="gallery-item"><a href="${data[i].images.large}"><img src="${data[i].images.thumb}" alt="${data[i].title}"></a></li>`)
+            // }
+            // var $img = `<img src="${data[0].images.thumb}" />`
+            // var $img2 = `<img src="${data[0].images.large}" />`
+            // $('.page-main').append($img);
+            // $('.page-main').append($img2);
+        })
+    </script>
+</body>
+</html>

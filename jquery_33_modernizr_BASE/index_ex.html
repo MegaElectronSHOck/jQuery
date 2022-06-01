@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Lesson  - Modernizr</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<style>
+		.demo-image{
+			-webkit-box-reflect : below;
+		}
+		.no-cssreflections .demo-image{
+			border-radius:30px;
+		}
+		.cssreflections .alt-image{display:none;}
+		.no-cssreflections .alt-image{display:block; transform : rotateX(180deg); position: relative; top:-5px; }
+	</style>
+
+
+</head>
+<body>
+
+	<!-- Demo content -->
+	<img src="images/demo-image.jpg" alt="" class='demo-image' />
+	<img src="images/demo-image.jpg" alt="" class='alt-image' />
+	<script>
+		if(Modernizr.cssreflections){
+		
+		}else{
+			alert('이브라우저에서는 css reflection을 지원하지 않습니다.')
+		}
+	</script>
+
+</body>
+</html>

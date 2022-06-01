@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./node_modules/fittext/dist/jquery.fittext.js"></script>
+    <script src="flowtype.js"></script>
+    <style>
+  body {
+  color: #444;
+  font-family: Arial, sans-serif;
+}
+h1 {
+  font-family: 'Lobster', Arial, sans-serif;
+}
+/* .container-fluid { max-width: 600px; } */
+
+/* @media screen and (max-width:960px){
+    h1{font-size:28px;}
+}
+@media screen and (max-width:768px){
+    h1{font-size:32px;} 
+}
+@media screen and (max-width:480px){
+    h1{font-size:6.7vw;} /* vw->viewport : 액정의 너비를 100%로 봤을때 10%(10vw) -> 브라우저가 커지면 엄청 커지므로 vw는 최소한 480이하 정도 쓰는게 좋다
+} */
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1 class="title1">Flexible Font Size</h1>
+            <h2 class="title2">I like my text responsive</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi eaque dignissimos tenetur. Aliquam sed sint, ratione assumenda? Quaerat consequatur nulla rem corporis, et, obcaecati cupiditate! Adipisci omnis nesciunt amet vero. Lorem ipsum dolor
+              sit amet, consectetur adipisicing elit. Dolorum vero, aliquam incidunt sequi similique alias voluptate. Possimus magni, quasi consequuntur. Ipsa nulla nobis, reprehenderit consectetur odit a? Assumenda, itaque, culpa!</p>
+          </div>
+        </div>
+      </div>
+
+    <script>
+        // // fittext.com
+        // $('.title1').fitText(3,  {minFontSize:'32px'});
+        // $('.title2').fitText(1.16, {minFontSize:'18px'});
+
+        //flowtype.js
+        $('h1').flowtype({
+            fontRatio : 10,
+            maxFont:60,
+            minFont:24
+        })
+        // $('p').flowtype({
+        //     fontRatio : 22,
+        //     minFont : 16
+        // })
+    </script>
+</body>
+</html>

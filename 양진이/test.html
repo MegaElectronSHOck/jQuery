@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <style>
+        section{
+            height: 500px;
+        }
+        section:nth-of-type(even){
+            background: #ccc;
+        }
+        .target{
+            width: 500px;
+            margin: 0 auto;
+            padding-bottom: 300px;
+        }
+        .target.active .content{
+            width: 500px;
+            left:50%;
+            transform : translateX(-50%)
+        }
+        .target .content{
+            width: 100%;
+            margin: 0 auto;
+            background: #3498db;
+            color : #fff;
+            text-align:center;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+   <h1>Sticky Elements</h1>
+   <section>
+       <h2>section 1</h2>
+   </section>
+   <section>
+       <h2>section 2</h2>
+   </section>
+   <section>
+       <h2>section 3</h2>
+       <div class="target">
+           <div class="content">
+               Sticky Element
+           </div>
+       </div>
+   </section>
+   <section>
+       <h2>section 4</h2>
+   </section>
+
+   <script>
+       var target = $('.target'),
+       targetContent = target.find('.content'),
+       targetOST = target.offset().top
+
+
+       $(window).scroll(function(){
+           var currentSCT = $(this).scrollTop();
+            if(currentSCT >= targetOST - 400){
+                target.addClass('active');
+                targetContent.css({position:'fixed', top: '400px'});
+
+                if(currentSCT >= targetOST - 100){
+                    target.removeClass('active')
+                    targetContent.css({position:'relative', top:'auto'})
+                    target.css({paddingTop : '300px', paddingBottom:'0'})
+                }
+            }else{
+                target.removeClass('active')
+                targetContent.css({position:'relative', top: 'auto'})
+                target.css({paddingTop : '0', paddingBottom:'300px'})
+            }
+        })
+
+   </script>
+</body>
+</html>

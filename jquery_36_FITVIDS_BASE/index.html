@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Lesson 6 - FitVids.js</title>
+	<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="./node_modules/fitvids/dist/jquery.fitvids.js"></script>
+
+	<style>
+		.container, .container-2{
+			width: 80%;
+			margin: 2em auto;
+			background:blue;
+		}
+		.container iframe, .container-2 iframe{
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- Demo content -->
+	<div class="container">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/Nstudk71OcU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+
+	<div class="container-2">
+		<iframe src="https://player.vimeo.com/video/184496053?h=610adbee99" width="640" height="360" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+
+	
+	<!-- 너비가 %로 바뀜에 따라 높이도 실시간으로 바뀌어야 한다. 31강좌 참조-->
+	<script>
+		$('.container, .container-2').fitVids();
+	</script>
+
+</body>
+</html>

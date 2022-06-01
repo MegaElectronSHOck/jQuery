@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Full width, height background</title>
+<link rel="stylesheet" href="./css/normalize.css">
+<link rel="stylesheet" href="./css/main.css">
+<script src="./js/vendor/modernizr.custom.min.js"></script>
+<script src="./js/vendor/jquery-1.10.2.min.js"></script>
+
+<script src="./js/main.js"></script>
+</head>
+<body>
+<div class="scene" >
+    <div class="full-bg">
+        <!-- <img src="img/full-bg.jpg" alt="">       -->
+        <video src="vivaldi.mp4"></video>
+    </div> 
+</div><!-- /.scene#scene-1 -->
+<script>
+    var container = $('.full-bg');
+
+    $(window).resize(function(){
+        var currentWindow = $(this),
+            windowWidth = currentWindow.width(),
+            windowHeight = currentWindow.height(),
+            browserRatio = windowWidth / windowHeight,
+            // imageRatio = 864 / 486; // 구해올 방법이 없음. 직접 써야함;
+            imageRatio = 854 / 480;
+        console.log(imageRatio , browserRatio)
+        if(imageRatio > browserRatio){
+            container.css({width : windowHeight * imageRatio, height : 100+'%', top:0, left : (windowWidth - windowHeight * imageRatio)/2 });
+        }else{
+            container.css({width: 100+"%", height : windowWidth/imageRatio, left:0, top: (windowHeight - windowWidth/imageRatio)/2})
+        }
+
+
+    })
+    $(window).trigger('resize');
+</script>
+</body>
+</html>

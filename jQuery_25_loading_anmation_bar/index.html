@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="robots" content="index, follow">
+<title></title>	
+<script src="./js/vendor/jquery-1.10.2.min.js"></script>
+<script src="./js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="./js/jquery.animateNumber.min.js"></script>
+<link rel="stylesheet" href="css/main.css">
+	
+<!--[if lt IE 9]>
+<script src="js/IE9.js"></script>
+<script src="js/html5shiv.js"></script>
+ <script src="js/respond.min.js"></script>
+ 
+<![endif]-->
+<!--[if lt IE 8]>
+<script src="js/IE8.js"></script>
+<script src="js/IE8.js">IE7_PNG_SUFFIX=".png";</script>
+<![endif]-->
+
+<!--[if lt IE 7]>
+<script src="js/IE7.js"></script>
+<![endif]-->	
+
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="bar"></div>
+        <div class="rate" data-rate="80"></div>
+    </div>
+    <script>
+        var progressWarp = $('.progress-bar'),
+            progressBar = $('.progress-bar').find('.bar'),
+            progressText = progressWarp.find('.rate'),
+            progressRate = progressText.attr('data-rate');
+
+        progressBar.animate({width: progressRate+'%'}, 2500);
+       
+        // 첫번째 방법 - setInterval을 이용한 방법
+        // setInterval(textAnimation,1000/10)
+        // function textAnimation(){
+        //     console.log('interval')
+        //     var currentRate = progressBar.width() / progressWarp.width() * 100;
+        //     progressText.text(Math.ceil(currentRate) + '%')
+        // }
+
+        // 두번째 방법 - animation을 이용한 방법
+        // $({rate : 0}).animate({rate:progressRate},{
+        //     duration: 2500,
+        //     progress : function(){
+        //         var now = this.rate;
+        //         progressText.text(Math.ceil(now) + "%")
+        //     },
+        //     complete : function(){
+        //         progressText.text('완료')
+        //     }
+        // })
+
+        //세번째 방법 - 라이브러리 animate Number(https://aishek.github.io/jquery-animateNumber/)
+        var percent_number_step = $.animateNumber.numberStepFactories.append(' %')
+        progressText.animateNumber(
+            {number : progressRate,
+             numberStep : percent_number_step
+            },
+            {
+                duration : 2500,
+
+            }
+        );
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js" ></script>
+    <style>
+        * { box-sizing: border-box; }
+body {
+  color: #444;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.input-group{
+    width: 340px;
+    margin: 50px auto;
+    position:relative;
+}
+label{
+    position:absolute;
+    left:0; top:0;
+    opacity:0;
+    visibility:hidden;
+    transition : .5s;
+
+}
+label.top{
+    opacity:1;
+    top: -20px;
+    visibility: visible;
+}
+input{border: none; border-bottom: 1px solid #888; display: block; font-size:20px;}
+input:focus{
+    outline:none;
+    border-bottom-width:4px;
+    border-color: #48f;
+    transition:.5s;
+}
+    </style>
+</head>
+<body>
+    <form>
+        <div class="input-group">
+          <label for="txtFirstName">First Name</label>
+          <input type="text" id="txtFirstName" placeholder="First Name" />
+        </div>
+        <div class="input-group">
+          <label for="txtLastName">Last Name</label>
+          <input type="text" id="txtLastName" placeholder="Last Name" />
+        </div>
+      </form>
+      <script>
+          $('input').click(function(){
+              $(this).attr('placeholder','').parent().find('label').addClass('top')
+              $(this).closest('form').css({border:'1px solid blue'});
+
+          })
+      </script>
+</body>
+</html>

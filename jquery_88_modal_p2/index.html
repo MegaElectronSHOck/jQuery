@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Fresco Lightbox</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="./node_modules/lightbox2/dist/css/lightbox.min.css">
+	<script src="./node_modules/lightbox2/dist/js/lightbox.min.js"></script>
+
+</head>
+<body>
+	<a href="images/img-1.jpg" data-lightbox="image-1" data-title="My caption">image-1</a>
+	<a href="images/img-2.jpg" data-lightbox="image-1" data-title="My caption">image-2</a>
+	<a href="images/img-3.jpg" data-lightbox="image-1" data-title="My caption">image-3</a>
+	<script>
+		lightbox.option({
+			'resizeDuration' : 200,
+			'wrapAround' : false
+		})
+	</script>
+</body>
+</html>

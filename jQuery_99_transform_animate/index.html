@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="./transform.js"></script>
+    <style>
+        div{background: #98bf21; height: 100px; width: 100px; position: absolute;}
+        button{margin-top: 200px;}
+    </style>
+</head>
+<body>
+    <div></div>
+    <button>움직이기</button>
+    <script>
+        // jquery transform js 
+
+        $('button').click(function(){
+            $('div').animate({transform:'translateX(250px)'})
+        })
+    </script>
+</body>
+</html>

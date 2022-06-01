@@ -1,0 +1,8 @@
+justify-content - center, flex-start, flex-end, 
+flex를 쓰면 align-items의 기본 속성은 stretch 이다. 높이가 자동으로 가장 긴 컨텐츠의 높이만큼 늘어난다.
+
+flex-grow : 1, flex-grow:2, flex-grow:1 -> 컨텐츠의 너비를 제외한 여백을 1:2:1의 비율로 나눠가짐
+flex-basis : 0 -> 본컨텐츠의 너비를 0으로 인식해서(브라우저의 전체 너비가 여백으로 인식됨) 
+                   flex-grow의 1:2:1의 비율을 전체 너비의 비율대로 나눠가짐 
+flex : 1, flex : 2 , flex : 1 -> 1:2:1
+ 의 비율 (flex-grow와 flex-basis : 0 의 축약형)

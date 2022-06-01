@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>mouse direction detection</h1>
+    <h2></h2>
+    <figure>
+        <img src="https://placehold.jp/150x150.png" alt="">
+        <figcaption>title</figcaption>
+    </figure>
+
+    <script>
+        /*
+            clientX, clientY //브라우저 기준  (브라우저를 줄였을때 screen과 차이가있음)
+            offsetX, offsetY // 이벤트가 일어난 그 요소
+            pageX, pageY // 전체 문서 (document) 기준
+            screenX, screenY // 모니터 기준
+
+        */
+
+        var target = document.querySelector('figure')
+        target.addEventListener('mousemove',function(e){
+            console.log(e.offsetX, e.offsetY) // 
+        })
+
+        var direction = '';
+        var oldX = 0;
+        var oldY = 0;
+
+        function detectMouseDirection(e){
+            if(e.pageX > oldX && e.pageY == oldY){
+                direction = 'east';
+            }
+            if(e.pageX < oldX && e.pageY == oldY){
+                direction = 'west';
+            }
+            if(e.pageX == oldX && e.pageY > oldY){
+                direction = 'south';
+            }
+            if(e.pageX == oldX && e.pageY < oldY){
+                direction = 'north';
+            }
+
+            document.querySelector('h2').innerText = direction;
+            oldX = e.pageX;
+            oldY = e.pageY;
+            console.log(direction)
+            
+        }
+
+        document.addEventListener('mousemove', detectMouseDirection);
+    </script>
+</body>
+</html>

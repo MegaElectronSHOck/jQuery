@@ -1,0 +1,25 @@
+yarn은 jquery나 fontawesome같은 라이브러리를 도스명령어로 설치할수 있게끔 하는 패키지 이다.
+
+1 설치 :
+    (1) node.js 설치
+    (2) npm install -g yarn
+
+2 도스명령어로 jquery등의 라이브러리를 설치할 폴더로 이동
+
+3 초기화 : yarn init
+    question name(nodejs) <- 만들 패키지이름 
+    version(1.0.0) <- 만들 패키지 버전
+    description <- 만들 패키지 설명
+    entry point <- index.js (그냥 엔터)
+    repository url <- 설치할 라이브러리 주소 (그냥 엔터)
+    author : 내 이름
+    licence (MIT) <- 라이센스 (그냥 엔터)
+    private <- 그냥 엔터
+
+    -> 해당 폴더에 package.json 파일이 생성됨
+
+4 도스 명령어로 yarn add fontawesome 입력 (원하는 버전이 있을 시 yarn add jquery@1.12.4)
+5 해당 폴더에 node_modules폴더 생성 되고 그 안에 fontawesome 생성됨
+
+6 다른 폴더및 파일들 다 삭제후 package.json 파일만 남겨둔체로 도스창에 yarn이라고 입력하면 설치됐던 파일들이 재 생성 됨
+

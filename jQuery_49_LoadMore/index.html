@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <style>
+        /* Gallery */
+        ul, li{list-style:none;}
+        a{text-decoration: none;}
+        .gallery{margin:0; padding:0;}
+        .gallery:after{content:''; display:block; clear:both;}
+        .gallery-item{ background: silver; padding:20px; animation:fadeIn 1s;margin-top:20px;}
+        .gallery-item:nth-child(4n){margin-right:0;}
+
+        @keyframes fadeIn{
+            0%{opacity:0;}
+            100%{opacity:1;}
+        }
+
+        
+        /* 이미지를 로딩하는 동안 보이지 않게 함 */
+        .gallery-item.is-loading{opacity:0;}
+    </style>
+</head>
+<body>
+    <div class="page-main" role="main">
+        <ul class="gallery" id="gallery">
+
+        </ul>
+        <button class="load-more" id="load-more">load more</button>
+    </div>
+    <script>
+        var $container = $('.gallery'),
+            $loadMoreBtn = $('.load-more'),
+            $addItemCount = 8,
+            $added = 0,
+            $allData;
+
+            $container.masonry({
+                itemSelector:'.gallery-item',
+                columnWidth: 270,
+                gutter:20
+            })
+
+        $.getJSON('./data/content.json',initGallery);
+
+        function initGallery(data){
+           $allData = data;
+           addItem();
+           $loadMoreBtn.click(addItem)
+        }
+        function addItem(){
+            var slidedData;
+            var elements = [];
+
+            slicedData = $allData.slice($added, $added + $addItemCount);
+            // <li class="gallery-item"><a href="#">title</a></li>
+            $.each(slicedData, function(idx, item){
+                var itemHTML = `<li class="gallery-item"><a href="#"><figure><img src="${item.images.thumb}" alt=""><figcaption></figcaption>${item.title}</figure></a></li>`;
+                elements.push($(itemHTML).get(0));
+            })
+            $container.append(elements);
+            $added += slicedData.length;
+
+            if($added >= $allData.length){
+                $loadMoreBtn.hide()
+            }
+            $container.imagesLoaded(function(){
+                $container.masonry('appended', elements)
+            })
+           
+        }
+    </script>
+</body>
+</html>

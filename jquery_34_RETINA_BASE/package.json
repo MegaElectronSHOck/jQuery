@@ -1,0 +1,8 @@
+{
+  "name": "ppp",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "retina.js": "latest"
+  }
+}

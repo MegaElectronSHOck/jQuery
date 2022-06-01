@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <style>
+      *{margin:0; padding:0; }
+
+      ul, li{list-style:none;}
+
+      .container{
+          width: 700px;
+          margin:100px auto;
+          user-select: none;
+      }
+      .slide_wrapper{
+          position: relative;
+          width: 660px; 
+         padding-top:200px;
+          margin:0 auto;
+          overflow:hidden;
+          background:green;
+      }
+      .slides{
+          position: absolute;
+          border: 1px solid #333;
+          left:0; top:0;
+          width: 100%;
+          background:blue;
+      }
+      .slides li{
+          position:absolute;
+          width:200px; 
+          height: 200px;
+          background: #333;
+          color:white;
+          text-align: center;
+          line-height:200px;
+          font-size:30px;
+          text-transform: uppercase;
+
+      }
+      .slides li:not(:last-child){
+          margin-right: 30px;
+      }
+      .controls{
+          text-align: center;
+          margin-top: 50px;
+          margin-bottom: 10px;
+      }
+      .controls span{
+          background: #333;
+          color:#fff;
+          padding: 10px 20px;
+          margin: 0 10px;
+          text-transform : uppercase;
+          font-weight: 600;
+          cursor: pointer;
+          
+      }
+      .controls span:active{
+          color: #f1f1f1;
+          background: #888;
+
+      }
+
+      @media screen and (max-width : 700px){
+          .container{
+              width: 100%;
+              padding: 0 20px;
+              box-sizing : border-box;
+          }
+          .slide_wrapper{
+              width: 100%;
+          }
+      }
+      
+  </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slide_wrapper">
+            <ul class="slides">
+                <li>slide 01</li>
+                <li>slide 02</li>
+                <li>slide 03</li>
+                <li>slide 04</li>
+                <li>slide 05</li>
+            </ul>
+            <div class="controls">
+                <span class="prev">prev</span>
+                <span class="next">next</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        var init = {
+            width: '660px',
+            paddingTop:'200px'
+        }
+        var slideWrapper = $('.slide_wrapper')
+            slides = $('.slides'),
+            slide = slides.find('li'),
+            prevBtn = slideWrapper.find('.controls .prev'),
+            nextBtn = slideWrapper.find('.controls .next'),
+            slideWidth = 200,
+            slideMargin = 30,
+            currentIndex = 0,
+            slideCount = slide.length;
+        var moveAmt,
+            clickFlag = true,
+            $interval,
+            newSlideWidth,
+            responsiveMargin,
+            maxSlides = 3;
+        
+
+            // $('.slide_wrapper').css({width:init.width, paddingTop:init.paddingTop})
+            slides.append(slide.clone().addClass('clone')).prepend(slide.clone().addClass('clone'));
+
+            function slideLayout(sw, sm){
+                var newSlides = slides.find('li');
+                    moveAmt = sw + sm;
+
+                    newSlides.each(function(idx){
+                        $(this).css({left:moveAmt*idx+'px', width: sw+'px'})
+                    })
+                    slides.css({width:moveAmt* newSlides.length, height: '200px'})
+                    // console.log(s)
+            }
+
+            slideLayout(slideWidth, slideMargin);
+           
+            // 중앙 배치하기
+            function setSlidePos(){
+                var ulMoveAmt = moveAmt * slideCount;
+                slides.css({transform : `translateX(${-ulMoveAmt+'px'})`});
+            }
+            setSlidePos();
+
+            nextBtn.click(()=>{
+                if(clickFlag){ 
+                    moveSlide(currentIndex + 1);
+                    clickFlag= false;
+                };
+               
+            });
+            prevBtn.click(()=>{
+                if(clickFlag){
+                moveSlide(currentIndex -1);
+                clickFlag=false;
+                }
+            })
+
+            function moveSlide(num){
+                slides.stop().animate({left:-moveAmt * num + 'px'},500,()=>{
+                    if(num === slideCount || num === -slideCount){
+                        slides.css({left:0});
+                    }
+                    currentIndex = num % slideCount;
+                    clickFlag=true;
+                });
+            }
+
+            // 자동슬라이드
+            function autoSlide(){
+                if(!$interval){
+                    
+                    $interval = setInterval(()=>{
+                        nextBtn.click();
+                    },1000)
+                }
+            }
+
+            function stopSlide(){
+                clearInterval($interval);
+                $interval = undefined;
+            }
+            autoSlide();
+
+            slides.mouseenter(()=>{
+                stopSlide()
+            }).mouseleave(()=>{
+                autoSlide()
+            })
+
+            // 반응형 
+
+            $(window).resize(()=>{
+                if($(this).width() < 700){
+                    responsiveMargin = 20;
+                    newSlideWidth = (slideWrapper.width()-responsiveMargin*(maxSlides-1))/maxSlides;
+                }else{
+                    responsiveMargin = slideMargin;
+                    newSlideWidth = slideWidth;
+                }
+
+                if($(this).width() < 500){
+                    responsiveMargin = 0;
+                    newSlideWidth = slideWrapper.width();
+                }
+                slideLayout(newSlideWidth, responsiveMargin);
+                setSlidePos()
+            })
+    </script>
+</body>
+</html>

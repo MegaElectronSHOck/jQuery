@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="./node_modules/animate.css/animate.css">
+    <style>
+        .animate__heartBeat{
+            animation-duration: 5s;
+            animation-iteration-count : 3;
+        }
+
+        section{
+            height: 50vh;
+        }
+        /* .animate__animated{
+            opacity:0;
+        } */
+    </style>
+</head>
+<body>
+    <h1 class="animate__animated">A simple of using Animate.css</h1>
+    <p>Here's the element that will be animated</p>
+
+    <section>
+        <p>1.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit officiis numquam quia quam inventore sequi soluta dignissimos enim repellendus iusto corrupti, id perspiciatis quo nostrum nulla error minima odio. Qui.</p>
+    </section>
+    <section>
+        <p>2.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit officiis numquam quia quam inventore sequi soluta dignissimos enim repellendus iusto corrupti, id perspiciatis quo nostrum nulla error minima odio. Qui.</p>
+    </section>
+    <section class="animate__fadeInBottomLeft" >
+        <p>3.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit officiis numquam quia quam inventore sequi soluta dignissimos enim repellendus iusto corrupti, id perspiciatis quo nostrum nulla error minima odio. Qui.</p>
+    </section>
+    <section class="animate__fadeInBottomRight" >
+        <p>4.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit officiis numquam quia quam inventore sequi soluta dignissimos enim repellendus iusto corrupti, id perspiciatis quo nostrum nulla error minima odio. Qui.</p>
+    </section>
+    <section>
+        <p>5.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit officiis numquam quia quam inventore sequi soluta dignissimos enim repellendus iusto corrupti, id perspiciatis quo nostrum nulla error minima odio. Qui.</p>
+    </section>
+    <script>
+        // 마우스 오버시
+        $('h1').mouseenter(function(){
+            $(this).addClass('animate__heartBeat')
+        }).mouseout(function(){
+            $(this).removeClass('animate__heartBeat')
+        })
+
+        // 스크롤시
+        var $section = $('section');
+        var clickFlag = true;
+        var $timerout;
+        $(window).scroll(function(){
+            var wct = $(this).scrollTop();
+
+            $('section').each(function(){
+                // var sectionOST = $(this).offset().top -500;
+                // var sectionEffect = $(this).attr('data-effect');
+                // if(wct >= sectionOST){
+                //     $(this).addClass(sectionEffect)
+                // }
+
+               var sct = $(this).offset().top -500,
+                   $ani_class = $(this).attr('class');
+                   
+               if(wct > sct && $ani_class && !$(this).hasClass('on')){
+                   
+                  var $this = $(this)
+                $(this).removeClass();
+                $(this).addClass('animate__animated');
+                         $timeout = setTimeout(function(){
+                        $this.addClass($ani_class).addClass('on');
+                        clearTimeout($timeout);
+                        $timeout = undefined;
+                    },10)
+                
+               
+            }
+            })      
+        })
+    </script>
+</body>
+</html>

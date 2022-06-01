@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foggy/1.1.1/jquery.foggy.min.js" integrity="sha512-AT+ig1IOPX3WZuQSer07uFw/Z4B7Axmo7d0oVLkBkbrCpsQ9RB/qFRd2VUka/IrBAB7+zFC2TKflMogbzKuTwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body { font-family: 'Raleway', sans-serif; }
+
+.well-form {
+  width: 300px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  margin-left: -150px;
+  background-color: rgba(255,255,255,0.85);
+  box-shadow: 0 0 40px #000;
+}
+
+.well-form h3 {
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+.error {
+  border-color: red;
+  box-shadow: 0 0 6px rgba(255,0,0,0.4);
+}
+
+.validation {
+  color: red;
+  font-style: italic;
+  font-size: 12px;
+  display: none;
+}
+
+body, html { width: 100%; height: 100%; }
+
+.img-bg-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #444 url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/409269/winter-small.jpg) top left / cover no-repeat;
+}
+.img-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/409269/winter.jpg);*/
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display:none;
+}
+    </style>
+</head>
+<body>
+    <div class="img-bg-blur"></div> <!-- 저해상도 배경 -->
+<div class="img-bg"></div>
+
+<div class="well well-form">
+  <h3>Contact Us</h3>
+  <div class="contact-form">
+    <div class="form-group">
+      <div class="validation">This field is required.</div>
+      <input type="text" class="form-control" placeholder="Name" id="txtName" />
+    </div>
+    <div class="form-group">
+      <div class="validation">This field is required.</div>
+      <input type="text" class="form-control" placeholder="email@address.com" id="txtEmail" />
+    </div>
+    <div class="form-group">
+      <div class="validation">This field is required.</div>
+      <textarea class="form-control"></textarea>
+    </div>
+    <button class="btn btn-block btn-primary" id="btnSubmit">Send</button>
+  </div>
+</div>
+<script>
+    var $btnSubmit = $("#btnSubmit"),
+    $fields = $(".form-control"),
+    imageURL = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/409269/winter.jpg";
+    $('.img-bg-blur').foggy() // 부드럽게 처리할 이미지의 선택자에 적용
+
+$btnSubmit.on("click", function() {
+  $fields.each(function() {
+    var value = $(this).val();
+    if (value == "") {
+      $(this).addClass("error");
+      $(this).parent().find(".validation").show(1000);
+    } else {
+      $(this).removeClass("error");
+      $(this).parent().find(".validation").hide(1000);
+    }
+  });
+  var errorCount = $(".error").length;
+  if (errorCount == 0) {
+    $btnSubmit.prop("disabled", true).text("Loading...");
+  }
+});
+$(window).on('load',function(){
+    $('.img-bg').css({backgroundImage:`url(${imageURL})`}).fadeIn(1000)
+}) // ready : Dom을 읽은후. load : dom의 요소들을 모드 로드한후
+</script>
+</body>
+</html>

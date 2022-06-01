@@ -1,0 +1,10 @@
+.demo-container{
+    width: 500px;
+    height: 333px;
+    background: url(../images/image.jpg) no-repeat  100% 100%;
+    text-indent : -9999em;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:2){  /* 여기서 webkit은 스마트폰 브라우저 이름이 webkit이다. */
+    .demo-container{background-image: url(../images/image@2x.jpg)}
+}

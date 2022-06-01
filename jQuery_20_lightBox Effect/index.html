@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js/vendor/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <div class="gallery-container">
+        <ul class="gallery">
+            <li><a href="#" alt="Gallery image"><img src="images/images-thumb-1.jpeg" alt="Gallery image" data-lightbox="images/images-thumb-1.jpeg" /></a></li>
+            <li><a href="#" alt="Gallery image"><img src="images/images-thumb-2.jpeg" alt="Gallery image" data-lightbox="images/images-thumb-2.jpeg"></a></li>
+            <li><a href="#" alt="Gallery image"><img src="images/images-thumb-3.jpeg" alt="Gallery image" data-lightbox="images/images-thumb-3.jpeg"></a></li>
+            <li><a href="#" alt="Gallery image"><img src="images/images-thumb-4.jpeg" alt="Gallery image" data-lightbox="images/images-thumb-4.jpeg"></a></li>
+            <li><a href="#" alt="Gallery image"><img src="images/images-thumb-1.jpeg" alt="Gallery image" data-lightbox="images/images-thumb-1.jpeg"></a></li>
+            <li><a href="#" alt="Gallery image"><img src="images/images-thumb-1.jpeg" alt="Gallery image" data-lightbox="images/images-thumb-1.jpeg"></a></li>
+        </ul>
+    </div><!-- end gallery-container-->
+    <div id="lightbox-overlay">
+        <img src="" alt="Lightbox image" title="Click anywhery to close" id="lightbox-image" />
+    </div><!--end lightbox-overlay-->    
+
+    <script>
+        var $button = $('.gallery a'),
+            $target = $('#lightbox-overlay'),
+            $targetImg = $target.find('img');
+
+            /* 버튼 클릭 하면 */
+            $button.click(function(e){
+                e.preventDefault();
+                var newImg = $(this).find('img').attr('data-lightbox');
+                $target.addClass('visible');
+                $targetImg.attr('src',newImg)
+            })
+            $target.click(function(){
+                $(this).removeClass('visible')
+            })
+    </script>
+</body>
+</html>

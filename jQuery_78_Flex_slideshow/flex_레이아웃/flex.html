@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #wrapper{
+        display:flex;
+        /* flex : 1 , flex : 2, flex : 1 -> 1:2:1 의 비율 */
+        justify-content : space-evenly; 
+        /* 
+        center: 중앙
+        flex-start : 왼쪽 (기본)
+        flex-end : 오른쪽
+        space-around : 좌우 균등 배치(양쪽 마진겹침 무시, 마진이 같지 않음)
+        space-evenly : 좌우 균등 배치 (양쪽 마진겹침 현상으로 일정 )
+        space-between : 왼쪽 끝, 중앙, 오른쪽 끝에 맞춰서 배치 
+        
+        */
+        align-items:baseline;
+        /* 
+        기본은 stretch (자동으로 가장 큰 컨텐츠 높이에 맞춤)
+        center : 중앙 
+        flex-start : 위에 맞춤
+        flex-end : 아래에 맞춤
+        
+        */
+        /*
+        1. 첫번째
+        display: flex;
+        flex-wrap : wrap; wrap, nowrap,wrap-reverse 
+        align-content :space-between ;
+        -> 위 3개 조합 : 가로로 배치된걸 세로로 배치되게 한후 위아래 컨텐츠간 간격 균등 배치 
+        2. 두번째 
+        display: flex; 
+        flex-direction : column; 가로가 주축인것을 세로가 주축으로 바꿔 세로정렬 
+        align-content :space-between ;
+        */
+        /* order : 1, order : 2 순서 바꿈 */
+        
+        background: skyblue;}
+      .item{width:100px; height: 100px;}
+      .item:nth-child(1){background: red}
+      .item:nth-child(2){background: blue}
+      .item:nth-child(3){background: green}
+
+      .inner:nth-child(1){background: yellow;}
+      .inner:nth-child(2){background: #777;}
+      /*
+       1.flex는 보통 부모요소에 부여해 자식요소를 정렬 시킨다.
+       2.직계자식만 적용되며 그 후손들에게는 전달되지 않는다 (.inner에게 전달돼지 않음)
+       */
+    </style>
+    
+</head>
+<body>
+  <div id="wrapper">
+    <div class="item">1</div>
+    <div class="item">
+      <div class="inner">1</div>
+      <div class="inner">2</div>
+    </div>
+    <div class="item">3</div>   
+  </div>
+</body>
+</html>

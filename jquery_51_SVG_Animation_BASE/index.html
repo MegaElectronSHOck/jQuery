@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Pencil</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/custom.css">
+
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>
+	<script src="js/jquery-1.12.4.min.js"></script>
+	<script src="js/main.js"></script>
+	<style>
+		.notepads{position: relative; margin-top: 40px; height: 252px;}
+		.notepads img, .notepads svg{
+			position: absolute;
+			transition : .5s;
+			opacity: 0;
+		}
+		.notepads svg{background: #fff;}
+		.notepads #bigpad{
+			left:0; top:0;
+		}
+		.notepads #smallpad{
+			right: 50px; bottom:-5px;
+		}
+		.notepads.animate #bigpad{
+			left : 70px; opacity: 1;
+		}
+		.notepads.animate #smallpad{
+			right : 150px; opacity: 1;
+		}
+
+.st0{fill:#E6E7E8;}
+.st1{fill:#231F20;}
+.st2{fill:none;stroke:#FFFFFF;stroke-width:4;stroke-miterlimit:10;}
+.st3{fill:none;stroke:#BCBEC0;stroke-width:4;stroke-miterlimit:10;}
+.st4{
+	fill:#231F20;
+	stroke:#000000;
+	stroke-width:9;
+	stroke-miterlimit:10;
+	stroke-dasharray:96;
+	stroke-dashoffset:96;
+	}	
+.notepads.animate .st4{
+	
+	animation: dash 0.4s linear forwards;
+}
+#line1{animation-delay: 0.1s;}	
+#line2{animation-delay: 0.2s;}	
+#line3{animation-delay: 0.3s;}	
+#line4{animation-delay: 0.4s;}	
+#line5{animation-delay: 0.5s;}	
+
+@keyframes dash{
+	from{stroke-dashoffset:96;}
+	to{stroke-dashoffset:0;}
+}
+
+	</style>
+</head>
+<body>
+
+
+
+	<div id="blue-container">
+
+		<h1 class="alc">Welcome to Pencil</h1>
+
+		<div class="alc" id="top-pencil">
+			<object>
+				<embed src="images/Pencil.svg" width="300px" height="300px">
+			</object>
+		</div>
+
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 notepads">
+				<!-- bigpad -->
+				<svg height=251.111px id=bigpad style="enable-background:new 0 0 150 251.111"version=1.1 viewBox="0 0 150 251.111"width=150px x=0px xml:space=preserve xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink y=0px>
+					<g id=big_x5F_pad>
+						<g>
+							<g>
+								<path class=st0 d="M12,242.611c-1.93,0-3.5-1.57-3.5-3.5v-227c0-1.93,1.57-3.5,3.5-3.5h128c1.93,0,3.5,1.57,3.5,3.5v227c0,1.93-1.57,3.5-3.5,3.5H12z"/>
+								<path class=st1 d="M139,13.111v225H13v-225H139 M140,4.111H12c-4.418,0-8,3.582-8,8v227c0,4.418,3.582,8,8,8h128c4.418,0,8-3.582,8-8v-227C148,7.693,144.418,4.111,140,4.111L140,4.111z"/>
+							</g>
+							<line class=st2 x1=13.301 x2=138.589 y1=15.7 y2=15.7 />
+							<line class=st3 x1=136.325 x2=136.325 y1=234.345 y2=13.164 />
+							<line class=st2 x1=15.566 x2=15.566 y1=17.965 y2=238.126 />
+							<line class=st3 x1=13.301 x2=138.589 y1=236.603 y2=236.603 />
+						</g>
+					</g>
+					<g id=lines>
+						<line class=st4 x1=29.5 x2=125.5 y1=32.055 y2=32.055 id=line1 />
+						<line class=st4 x1=29.5 x2=125.5 y1=53.555 y2=53.555 id=line2 />
+						<line class=st4 x1=29.5 x2=125.5 y1=75.055 y2=75.055 id=line3 />
+						<line class=st4 x1=29.5 x2=125.5 y1=96.555 y2=96.555 id=line4 />
+						<line class=st4 x1=29.5 x2=95.5 y1=118.055 y2=118.055 id=line5 />
+					</g>
+				</svg>
+<!-- bigpad-->
+				<img src="images/smallpad.svg" id="smallpad" alt="small pad">			
+			</div>
+			<div class="col-md-7">
+				<h2>Smooth to the Touch</h3>
+				<p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="gray-container" class="clearfix">
+
+		<h3 class="alc">Try Pencil</h1>
+
+		<div class="alc" id="bottom-pencil">
+			<object id="pencilsvg" data="images/PencilButton.svg" type="image/svg+xml" width="300px" height="300px" >
+				Your browser doesn't support SVG
+			</object>
+		</div>
+
+	</div>
+	<script>
+		var notePad = $('.notepads');
+		$(window).scroll(function(){
+			if($(this).scrollTop() > 300){
+				// notePad.add('.st4').addClass('animate')
+				notePad.addClass('animate')
+			}else{
+				notePad.removeClass('animate')
+			}
+		})
+	</script>
+</body>
+</html>
